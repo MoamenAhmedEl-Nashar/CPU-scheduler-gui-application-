@@ -8,6 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+class Process
+{
+    public int Pid;
+    public int burst_time;
+    public int waiting_time=0;
+    public int last_active=0;
+}
 namespace scheduler_CPU
 {
     public partial class Form1 : Form
@@ -24,9 +31,9 @@ namespace scheduler_CPU
         {
             n = int.Parse(nOfProcesses.Text);
         }
-        int []burst_time=new int[10];//max number of processe is 10
+        int[] burst_time = new int[10];//max number of processe is 10
         int i = 0;
-        int wtime=0,averageWtime=0;
+        int wtime = 0, averageWtime = 0;
         private void button2_Click(object sender, EventArgs e)
         {
             burst_time[i] = int.Parse(burstTime_text.Text);
@@ -40,7 +47,7 @@ namespace scheduler_CPU
         }
         private void calculateWaitingTime()
         {
-            for(int i=0;i<n;i++)
+            for (int i = 0; i < n; i++)
             {
                 //gantt chart code
                 averageWtime += wtime;
@@ -53,12 +60,12 @@ namespace scheduler_CPU
 
 
         /*---------------------- SJF mode Code --------------------------- */
-        
+
         // number of process 
         int num_process;
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            num_process = (int) numericUpDown1.Value;
+            num_process = (int)numericUpDown1.Value;
         }
 
         // Preemptive check box
@@ -78,7 +85,7 @@ namespace scheduler_CPU
 
         // store values accending
         double sjwtime, sjaverageWtime;
-        List <int> vals = new List<int>();
+        List<int> vals = new List<int>();
         private void button3_Click(object sender, EventArgs e)
         {
             if (!checkBox1.Checked)
@@ -104,7 +111,7 @@ namespace scheduler_CPU
                 }
             }
 
-            
+
             else
             {
                 //preemtive code
@@ -115,7 +122,7 @@ namespace scheduler_CPU
 
         }
 
-       /*---------------------------- End SJF mode Code-----------------------------*/
+        /*---------------------------- End SJF mode Code-----------------------------*/
 
 
         /*----------------------------- priority mode code---------------------------*/
@@ -144,7 +151,7 @@ namespace scheduler_CPU
 
         // store values and priority
         double prwtime, praverageWtime;
-        List<int [] > pri_vals = new List <int[]>();
+        List<int[]> pri_vals = new List<int[]>();
         private void button4_Click(object sender, EventArgs e)
         {
             if (!checkBox2.Checked)
@@ -181,7 +188,68 @@ namespace scheduler_CPU
         }
 
         /*-------------------- End priority mode code -------------------------- */
-       
+
+        /*---------------------Round Robin mode code ---------------------------*/
+        int n_RR;//number of processes
+        int quantum;
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            n_RR = int.Parse(textBox2.Text);
+            quantum = int.Parse(textBox4.Text);
+            MessageBox.Show("ok");
+        }
+        Queue<Process> queue = new Queue<Process>();
+        int counter_RR = 0;
+        
+        float  averageWtime_RR = 0;
+        private void insertButton_RR_Click(object sender, EventArgs e)
+        {
+            Process p=new Process();p.Pid = counter_RR + 1;p.burst_time = int.Parse(burstText_RR.Text);
+            queue.Enqueue(p);
+            counter_RR++;
+            if(n_RR==counter_RR)
+            {
+                insertButton_RR.Enabled = false;
+                calculateWaitingTime_RR();
+            }
+                
+        }
+        int time_RR = 0;
+        private void calculateWaitingTime_RR()
+        {
+            Process tempp;
+            while(queue.Count!=0)
+            {
+                tempp = queue.Dequeue();
+                if (tempp.burst_time < quantum)
+                {
+                    tempp.waiting_time = time_RR - tempp.last_active;
+                    averageWtime_RR += tempp.waiting_time;
+                    time_RR += tempp.burst_time;
+                    tempp.burst_time -= tempp.burst_time;
+
+                    tempp.last_active = time_RR;
+                    
+                }
+                else
+                {
+                    tempp.waiting_time = time_RR - tempp.last_active;
+                    averageWtime_RR += tempp.waiting_time;
+                    time_RR += quantum;
+                    tempp.burst_time -= quantum;
+                    tempp.last_active = time_RR;
+                    if (tempp.burst_time != 0) queue.Enqueue(tempp);//20  16
+                   
+                }
+               
+                //gantt chart code
+                
+            }
+            
+
+            waitingText_RR.Text = (averageWtime_RR / n_RR).ToString();
+        }
+        /*---------------------End Round Robin mode code-------------------------*/
 
     }
 }
