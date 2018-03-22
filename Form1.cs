@@ -8,13 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-class Process
-{
-    public int Pid;
-    public int burst_time;
-    public int waiting_time=0;
-    public int last_active=0;
-}
 namespace scheduler_CPU
 {
     public partial class Form1 : Form
@@ -66,6 +59,13 @@ namespace scheduler_CPU
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             num_process = (int)numericUpDown1.Value;
+
+            // reset and start again
+            button3.Enabled = true;
+            gant.Clear();
+            sjwtime=0;
+            sjaverageWtime = 0;
+            pd = 1;
         }
 
         // Preemptive check box
@@ -84,41 +84,91 @@ namespace scheduler_CPU
         }
 
         // store values accending
-        double sjwtime, sjaverageWtime;
-        List<int> vals = new List<int>();
+        double sjwtime=0, sjaverageWtime=0, prsjaverageWtime=0, prsjwtime=0;
+        List<Process> vals = new List<Process>();
+        List<Process> premtive_vals = new List<Process>();
+        int pd = 1;
         private void button3_Click(object sender, EventArgs e)
         {
-            if (!checkBox1.Checked)
+            Process x = new Process (); // dummy process
+            x.Pid=pd;
+            pd++;
+            x.burst_time=(int)numericUpDown2.Value;
+            if (checkBox1.Checked) x.arival_time = (int)numericUpDown3.Value;
+            vals.Add(x);
+            MessageBox.Show("Inserted");
+
+            if (vals.Count == num_process && !checkBox1.Checked)
             {
-                if (vals.Count != num_process)
+                button3.Enabled = false;
+                vals = vals.OrderBy(arr => arr.burst_time).ToList();
+                int st_t=0, end_t=0;
+                for (int j = 0; j < num_process; j++)
                 {
-                    vals.Add((int)numericUpDown2.Value);
-                    vals.Sort();
+                    //gantt chart code
+                    end_t=st_t+vals[j].burst_time;
+                    gant.AppendText("P"+vals[j].Pid+" started "+ st_t+" and ended "+end_t+"\n");
+                    st_t = end_t;
+                    //cal average waiting time
+                    sjaverageWtime += sjwtime;
+                    sjwtime += vals[j].burst_time;
                 }
-                else if (vals.Count == num_process)
+
+                label9.Text = (sjaverageWtime / (double)num_process).ToString() + " msec";
+                vals.Clear();
+            }
+
+            //preemtive code
+            else if (vals.Count == num_process && checkBox1.Checked)
                 {
                     button3.Enabled = false;
-
-                    //cal avg waiting time code
-                    for (int j = 0; j < num_process; j++)
+                    vals = vals.OrderBy(arr => arr.arival_time).ToList();
+                    int indx = 0;
+                    for (int i = 0; i < vals.Count-1; i++)
                     {
-                        //gantt chart code
-                        sjaverageWtime += sjwtime;
-                        sjwtime += vals[j];
+                        Process pre_sjf = new Process();
+                        pre_sjf.burst_time = vals[i + 1].arival_time - vals[i].arival_time;
+                        pre_sjf.Pid = vals[indx].Pid;
+                        pre_sjf.arival_time = vals[indx].arival_time;
+                        premtive_vals.Add(pre_sjf);
+                        vals[indx].burst_time -= pre_sjf.burst_time;
+                        int bst_tm = vals[indx].burst_time;
+                        for (int j = i + 1; j >= 0; j--)
+                            if (vals[j].burst_time < bst_tm) indx = j;
                     }
 
-                    label9.Text = (sjaverageWtime / (double)num_process).ToString() + " msec";
+                    vals = vals.OrderBy(arr => arr.burst_time).ToList();
+                    for (int xx = 0; xx < vals.Count; xx++) premtive_vals.Add(vals.ElementAt(xx));//join lists
+                    for (int jj = 0; jj < premtive_vals.Count-1; jj++)//join similar PID
+                    { 
+                        if(premtive_vals[jj].Pid==premtive_vals[jj+1].Pid)
+                        {
+                            premtive_vals[jj+1].burst_time += premtive_vals[jj].burst_time;
+                            premtive_vals.RemoveAt(jj);
+                            jj = -1;
+                        }
+                    }
+
+                    int st_t = 0, end_t = 0; int bs = 0;
+                    for (int j = 0; j < premtive_vals.Count; j++)
+                    {
+                        //gantt chart code
+                        end_t = st_t + premtive_vals[j].burst_time;
+                        gant.AppendText("P" + premtive_vals[j].Pid + " started " + st_t + " and ended " + end_t + "\n");
+                        st_t = end_t;
+                        //cal average waiting time
+                        for (int z = j-1; z >= 0; z--) 
+                            if (premtive_vals[j].Pid == premtive_vals[z].Pid)
+                                bs = premtive_vals[z].burst_time;
+                        prsjaverageWtime += (prsjwtime - bs - premtive_vals[j].arival_time);
+                        bs = 0;
+                        prsjwtime += premtive_vals[j].burst_time;
+                    }
+
+                    label9.Text = (prsjaverageWtime / (double)num_process).ToString() + " msec";
+                    vals.Clear();
+                    premtive_vals.Clear();
                 }
-            }
-
-
-            else
-            {
-                //preemtive code
-                MessageBox.Show("shit still not done");
-            }
-
-            MessageBox.Show("Inserted");
 
         }
 
@@ -132,6 +182,13 @@ namespace scheduler_CPU
         private void numericUpDown5_ValueChanged(object sender, EventArgs e)
         {
             num_process_prio = (int)numericUpDown5.Value;
+
+            //reset values and start again
+            button4.Enabled = true;
+            gant2.Clear();
+            prwtime = 0;
+            praverageWtime = 0;
+            pr_pd = 1;
         }
 
         // Preemptive checkbox
@@ -150,41 +207,90 @@ namespace scheduler_CPU
         }
 
         // store values and priority
-        double prwtime, praverageWtime;
-        List<int[]> pri_vals = new List<int[]>();
+        double prwtime = 0, praverageWtime = 0, prtprwtime = 0, prtpraverageWtime = 0; int pr_pd = 1;
+        List<Process> pri_vals = new List<Process>();
+        List<Process> premt_pri_vals = new List<Process>();
         private void button4_Click(object sender, EventArgs e)
         {
-            if (!checkBox2.Checked)
-            {
+            
+                Process prix = new Process();
                 int[] process = new int[2];
-                process[0] = (int)numericUpDown4.Value; //time
-                process[1] = (int)numericUpDown7.Value; //priority
-                pri_vals.Add(process);
-                pri_vals = pri_vals.OrderBy(arr => arr[1]).ToList(); //sorting based on priority
+                prix.Pid = pr_pd;
+                pr_pd++;
+                prix.burst_time = (int)numericUpDown4.Value; //time
+                prix.priority = (int)numericUpDown7.Value; //priority
+                if (checkBox2.Checked) prix.arival_time = (int)numericUpDown6.Value; //arival time
+                pri_vals.Add(prix);
+                MessageBox.Show("Inserted");
 
-                if (pri_vals.Count == num_process_prio)
+                if (pri_vals.Count == num_process_prio && !checkBox2.Checked)
                 {
                     button4.Enabled = false;
-
-                    //cal avg waiting time code
+                    pri_vals = pri_vals.OrderBy(arr => arr.priority).ToList(); //sorting based on priority
+                    int st_t = 0, end_t = 0;
                     for (int j = 0; j < num_process_prio; j++)
                     {
                         //gantt chart code
+                        end_t = st_t + pri_vals[j].burst_time;
+                        gant2.AppendText("P" + pri_vals[j].Pid + " started " + st_t + " and ended " + end_t + "\n");
+                        st_t = end_t;
+                        //cal average waiting time
                         praverageWtime += prwtime;
-                        prwtime += pri_vals[j][0];
+                        prwtime += pri_vals[j].burst_time;
                     }
 
                     label12.Text = (praverageWtime / (double)num_process_prio).ToString() + " msec";
+                    pri_vals.Clear();
                 }
-            }
 
-            else
-            {
                 //preemtive code
-                MessageBox.Show("shit still not done");
-            }
+                else if (pri_vals.Count == num_process_prio && checkBox2.Checked)
+                {
+                    button4.Enabled = false;
+                    pri_vals = pri_vals.OrderBy(arr => arr.arival_time).ToList();
+                    int indx = 0;
+                    for (int i = 0; i < pri_vals.Count - 1; i++)
+                    {
+                        Process pre_sjf = new Process();
+                        pre_sjf.burst_time = pri_vals[i + 1].arival_time - pri_vals[i].arival_time;
+                        pre_sjf.Pid = pri_vals[indx].Pid;
+                        pre_sjf.arival_time = pri_vals[indx].arival_time;
+                        premt_pri_vals.Add(pre_sjf);
+                        pri_vals[indx].burst_time -= pre_sjf.burst_time;
+                        for (int j = i + 1; j >= 0; j--)
+                            if (pri_vals[j].priority < pri_vals[indx].priority) indx = j;
+                    }
 
-            MessageBox.Show("Inserted");
+                    pri_vals = pri_vals.OrderBy(arr => arr.priority).ToList();
+                    for (int xx = 0; xx < pri_vals.Count; xx++) premt_pri_vals.Add(pri_vals.ElementAt(xx));//join lists
+                    for (int jj = 0; jj < premt_pri_vals.Count - 1; jj++)//join similar PID
+                    {
+                        if (premt_pri_vals[jj].Pid == premt_pri_vals[jj + 1].Pid)
+                        {
+                            premt_pri_vals[jj + 1].burst_time += premt_pri_vals[jj].burst_time;
+                            premt_pri_vals.RemoveAt(jj);
+                            jj = -1;
+                        }
+                    }
+                    int st_t = 0, end_t = 0; int bzs = 0;
+                    for (int j = 0; j < premt_pri_vals.Count; j++)
+                    {
+                        //gantt chart code
+                        end_t = st_t + premt_pri_vals[j].burst_time;
+                        gant2.AppendText("P" + premt_pri_vals[j].Pid + " started " + st_t + " and ended " + end_t + "\n");
+                        st_t = end_t;
+                        //cal average waiting time
+                        for (int z = j - 1; z >= 0; z--)
+                            if (premt_pri_vals[j].Pid == premt_pri_vals[z].Pid)
+                                bzs = premt_pri_vals[z].burst_time;
+                        prtpraverageWtime += (prtprwtime - bzs - premt_pri_vals[j].arival_time);
+                        bzs = 0;
+                        prtprwtime += premt_pri_vals[j].burst_time;
+                    }
+                    label12.Text = (prtpraverageWtime / (double)num_process_prio).ToString() + " msec";
+                    pri_vals.Clear();
+                    premt_pri_vals.Clear();
+                }
         }
 
         /*-------------------- End priority mode code -------------------------- */
@@ -252,4 +358,15 @@ namespace scheduler_CPU
         /*---------------------End Round Robin mode code-------------------------*/
 
     }
+
+    class Process
+    {
+        public int Pid;
+        public int burst_time;
+        public int arival_time=0;
+        public int waiting_time = 0;
+        public int last_active = 0;
+        public int priority;
+    }
+
 }
