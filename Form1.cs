@@ -25,11 +25,12 @@ namespace scheduler_CPU
         private void button1_Click(object sender, EventArgs e)
         {
             n_fcfs = int.Parse(nOfProcesses.Text);
+            
         }
         Queue<Process> queue_fcfs = new Queue<Process>();
         int counter_fcfs = 0;
         float averageWtime_fcfs = 0;
-        
+
         private void button2_Click(object sender, EventArgs e)
         {
             Process p_fcfs = new Process(); p_fcfs.Pid = counter_fcfs + 1;
@@ -59,20 +60,19 @@ namespace scheduler_CPU
                 {
                     tempp_fcfs.waiting_time = time_fcfs - tempp_fcfs.last_active;
                     averageWtime_fcfs += tempp_fcfs.waiting_time;
-                    //////////
+                    //time chart//
                     Label num_fcfs = new Label();
-                    num_fcfs.Location = new Point(10 + time_fcfs * 10, 305);
                     num_fcfs.Text = time_fcfs.ToString();
                     num_fcfs.Width = tempp_fcfs.burst_time * 10;
                     flowLayoutPanel_fcfs_nums.Controls.Add(num_fcfs);
-                    /////////
+                    //end time chart//
                     time_fcfs += tempp_fcfs.burst_time;
                     //gantt chart code
                     Label tempLabel_fcfs = new Label();
                     tempLabel_fcfs.Enabled = true;
                     tempLabel_fcfs.BorderStyle = BorderStyle.FixedSingle;
-                    tempLabel_fcfs.Font = new Font("Arial", 12, FontStyle.Bold);
-                    tempLabel_fcfs.Location = new Point(10 + time_fcfs * 10, 300);
+                    tempLabel_fcfs.Font = new Font("Arial", 10, FontStyle.Bold);
+                   
                     string s = "P" + tempp_fcfs.Pid.ToString();
                     tempLabel_fcfs.Text = s;
                     tempLabel_fcfs.Width = tempp_fcfs.burst_time * 10;
@@ -80,12 +80,18 @@ namespace scheduler_CPU
                     ////////////////////////
                     tempp_fcfs.burst_time -= tempp_fcfs.burst_time;
                     tempp_fcfs.last_active = time_fcfs;
-                    
-                }
 
+                }
+                
             }
-            waitingText_fcfs.Text = (averageWtime_fcfs / n_fcfs).ToString();
+            //last time label
+            Label num_fcfsLast = new Label();
+            num_fcfsLast.Text = time_fcfs.ToString();
             
+            flowLayoutPanel_fcfs_nums.Controls.Add(num_fcfsLast);
+            //////////////////
+            waitingText_fcfs.Text = (averageWtime_fcfs / n_fcfs).ToString();
+
         }
 
 
@@ -103,7 +109,7 @@ namespace scheduler_CPU
 
             // reset and start again
             button3.Enabled = true;
-           // gant.Clear();
+            // gant.Clear();
             flowLayoutPanel5.Controls.Clear();
             flowLayoutPanel4.Controls.Clear();
             sjwtime = 0;
@@ -156,7 +162,7 @@ namespace scheduler_CPU
                     num_fcfs.Location = new Point(10 + st_t * 10, 305);
                     num_fcfs.Text = st_t.ToString();
                     if (vals[j].burst_time < 3) num_fcfs.Width = 28;
-                    else num_fcfs.Width = vals[j].burst_time * 10-2;
+                    else num_fcfs.Width = vals[j].burst_time * 10 - 2;
                     flowLayoutPanel5.Controls.Add(num_fcfs);
                     /////////
                     st_t += vals[j].burst_time;
@@ -180,7 +186,7 @@ namespace scheduler_CPU
                 }
                 //print last timelable in gant
                 Label num_fcfss = new Label();
-                num_fcfss.Location = new Point(10+st_t * 10, 300);
+                num_fcfss.Location = new Point(10 + st_t * 10, 300);
                 num_fcfss.Text = st_t.ToString();
                 flowLayoutPanel5.Controls.Add(num_fcfss);
                 /////////////////
@@ -502,7 +508,7 @@ namespace scheduler_CPU
                         averageWtime_RR += tempp.waiting_time;
                         //////////
                         Label num_RR = new Label();
-                        num_RR.Location = new Point(10 + time_RR * 10, 305);
+                        
                         num_RR.Text = time_RR.ToString();
                         num_RR.Width = tempp.burst_time * 10;
                         flowLayoutPanel_RR_nums.Controls.Add(num_RR);
@@ -512,15 +518,15 @@ namespace scheduler_CPU
                         Label tempLabel_RR = new Label();
                         tempLabel_RR.Enabled = true;
                         tempLabel_RR.BorderStyle = BorderStyle.FixedSingle;
-                        tempLabel_RR.Font = new Font("Arial", 12, FontStyle.Bold);
-                        tempLabel_RR.Location = new Point(10 + time_RR * 10, 300);
+                        tempLabel_RR.Font = new Font("Arial", 10, FontStyle.Bold);
+                        
                         string s = "p" + tempp.Pid.ToString();
                         tempLabel_RR.Text = s;
                         tempLabel_RR.Width = tempp.burst_time * 10;
                         flowLayoutPanel_RR.Controls.Add(tempLabel_RR);
 
-                        
-                        
+
+
 
                         ////////////////////////
                         tempp.burst_time -= tempp.burst_time;
@@ -533,7 +539,7 @@ namespace scheduler_CPU
                         averageWtime_RR += tempp.waiting_time;
                         //////////
                         Label num_RR = new Label();
-                        num_RR.Location = new Point(10 + time_RR * 10, 305);
+                        
                         num_RR.Text = time_RR.ToString();
                         num_RR.Width = quantum * 10;
                         flowLayoutPanel_RR_nums.Controls.Add(num_RR);
@@ -543,15 +549,15 @@ namespace scheduler_CPU
                         Label tempLabel_RR = new Label();
                         tempLabel_RR.Enabled = true;
                         tempLabel_RR.BorderStyle = BorderStyle.FixedSingle;
-                        tempLabel_RR.Font = new Font("Arial", 12, FontStyle.Bold);
-                        tempLabel_RR.Location = new Point(10 + time_RR * 10, 300);
+                        tempLabel_RR.Font = new Font("Arial", 10, FontStyle.Bold);
+                        
                         string s = "p" + tempp.Pid.ToString();
                         tempLabel_RR.Text = s;
                         tempLabel_RR.Width = quantum * 10;
                         flowLayoutPanel_RR.Controls.Add(tempLabel_RR);
 
 
-                        
+
 
                         ////////////////////////
                         tempp.burst_time -= quantum;
@@ -565,10 +571,12 @@ namespace scheduler_CPU
 
                 }
             }
-
-
-
-
+            //last time label
+            Label num_RRLast = new Label();
+            num_RRLast.Text = time_RR.ToString();
+          
+            flowLayoutPanel_RR_nums.Controls.Add(num_RRLast);
+            //////////////////
             waitingText_RR.Text = (averageWtime_RR / n_RR).ToString();
         }
 
@@ -594,5 +602,5 @@ class Process
     public int last_active = 0;
     public int arrival_time;
     public int priority;
-    
+
 }
