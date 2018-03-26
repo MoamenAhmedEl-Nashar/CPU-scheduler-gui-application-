@@ -33,15 +33,23 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.burstTime_text = new System.Windows.Forms.TextBox();
+            this.burstText_fcfs = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.waitingTime_text = new System.Windows.Forms.TextBox();
+            this.waitingText_fcfs = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label25 = new System.Windows.Forms.Label();
+            this.arrivalText_fcfs = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel_fcfs = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel_fcfs_nums = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.gant = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
@@ -53,8 +61,9 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.gant2 = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
             this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
             this.label15 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -68,30 +77,40 @@
             this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel_RR = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel_RR_nums = new System.Windows.Forms.FlowLayoutPanel();
+            this.label24 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.insertButton_RR = new System.Windows.Forms.Button();
             this.waitingText_RR = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
+            this.arrivalText_RR = new System.Windows.Forms.TextBox();
             this.burstText_RR = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.tabPage3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.flowLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             this.tabPage4.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // nOfProcesses
@@ -105,7 +124,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 35);
+            this.label1.Location = new System.Drawing.Point(17, 33);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(140, 13);
@@ -134,7 +153,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(314, 119);
+            this.button2.Location = new System.Drawing.Point(314, 135);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(84, 41);
@@ -143,41 +162,41 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // burstTime_text
+            // burstText_fcfs
             // 
-            this.burstTime_text.Location = new System.Drawing.Point(194, 130);
-            this.burstTime_text.Margin = new System.Windows.Forms.Padding(2);
-            this.burstTime_text.Name = "burstTime_text";
-            this.burstTime_text.Size = new System.Drawing.Size(76, 20);
-            this.burstTime_text.TabIndex = 5;
+            this.burstText_fcfs.Location = new System.Drawing.Point(194, 130);
+            this.burstText_fcfs.Margin = new System.Windows.Forms.Padding(2);
+            this.burstText_fcfs.Name = "burstText_fcfs";
+            this.burstText_fcfs.Size = new System.Drawing.Size(76, 20);
+            this.burstText_fcfs.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(19, 93);
+            this.label3.Location = new System.Drawing.Point(17, 91);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(268, 13);
+            this.label3.Size = new System.Drawing.Size(345, 13);
             this.label3.TabIndex = 6;
-            this.label3.Text = "enter burst time of the process and click insert button:";
+            this.label3.Text = "enter burst time and arrival time of the process and click insert button:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(33, 219);
+            this.label4.Location = new System.Drawing.Point(31, 236);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(115, 13);
             this.label4.TabIndex = 7;
             this.label4.Text = "average waiting time=";
             // 
-            // waitingTime_text
+            // waitingText_fcfs
             // 
-            this.waitingTime_text.Location = new System.Drawing.Point(194, 212);
-            this.waitingTime_text.Margin = new System.Windows.Forms.Padding(2);
-            this.waitingTime_text.Name = "waitingTime_text";
-            this.waitingTime_text.Size = new System.Drawing.Size(72, 20);
-            this.waitingTime_text.TabIndex = 8;
+            this.waitingText_fcfs.Location = new System.Drawing.Point(194, 233);
+            this.waitingText_fcfs.Margin = new System.Windows.Forms.Padding(2);
+            this.waitingText_fcfs.Name = "waitingText_fcfs";
+            this.waitingText_fcfs.Size = new System.Drawing.Size(72, 20);
+            this.waitingText_fcfs.TabIndex = 8;
             // 
             // tabControl1
             // 
@@ -191,31 +210,109 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(10, 5);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(444, 449);
+            this.tabControl1.Size = new System.Drawing.Size(436, 387);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 9;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label25);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.button2);
-            this.tabPage1.Controls.Add(this.waitingTime_text);
+            this.tabPage1.Controls.Add(this.waitingText_fcfs);
             this.tabPage1.Controls.Add(this.nOfProcesses);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.burstTime_text);
+            this.tabPage1.Controls.Add(this.arrivalText_fcfs);
+            this.tabPage1.Controls.Add(this.burstText_fcfs);
+            this.tabPage1.Controls.Add(this.label21);
+            this.tabPage1.Controls.Add(this.label20);
             this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.flowLayoutPanel2);
             this.tabPage1.Location = new System.Drawing.Point(4, 26);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(436, 419);
+            this.tabPage1.Size = new System.Drawing.Size(428, 357);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "FCFS";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label25.Location = new System.Drawing.Point(19, 196);
+            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(348, 26);
+            this.label25.TabIndex = 9;
+            this.label25.Text = "NOTE: first process arrival time must be 0 and other processes must be\r\n greater " +
+    "than 0.Or all arrival times equal 0.";
+            // 
+            // arrivalText_fcfs
+            // 
+            this.arrivalText_fcfs.Location = new System.Drawing.Point(194, 162);
+            this.arrivalText_fcfs.Margin = new System.Windows.Forms.Padding(2);
+            this.arrivalText_fcfs.Name = "arrivalText_fcfs";
+            this.arrivalText_fcfs.Size = new System.Drawing.Size(76, 20);
+            this.arrivalText_fcfs.TabIndex = 5;
+            this.arrivalText_fcfs.Text = "0";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(99, 162);
+            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(93, 13);
+            this.label21.TabIndex = 6;
+            this.label21.Text = "enter arrival time:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(99, 132);
+            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(88, 13);
+            this.label20.TabIndex = 6;
+            this.label20.Text = "enter burst time:";
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.AutoScroll = true;
+            this.flowLayoutPanel2.Controls.Add(this.flowLayoutPanel_fcfs);
+            this.flowLayoutPanel2.Controls.Add(this.flowLayoutPanel_fcfs_nums);
+            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(22, 265);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(389, 72);
+            this.flowLayoutPanel2.TabIndex = 12;
+            // 
+            // flowLayoutPanel_fcfs
+            // 
+            this.flowLayoutPanel_fcfs.AutoSize = true;
+            this.flowLayoutPanel_fcfs.BackColor = System.Drawing.Color.DarkRed;
+            this.flowLayoutPanel_fcfs.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.flowLayoutPanel_fcfs.Location = new System.Drawing.Point(2, 2);
+            this.flowLayoutPanel_fcfs.Margin = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel_fcfs.Name = "flowLayoutPanel_fcfs";
+            this.flowLayoutPanel_fcfs.Size = new System.Drawing.Size(0, 0);
+            this.flowLayoutPanel_fcfs.TabIndex = 10;
+            // 
+            // flowLayoutPanel_fcfs_nums
+            // 
+            this.flowLayoutPanel_fcfs_nums.AutoSize = true;
+            this.flowLayoutPanel_fcfs_nums.Location = new System.Drawing.Point(2, 6);
+            this.flowLayoutPanel_fcfs_nums.Margin = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel_fcfs_nums.Name = "flowLayoutPanel_fcfs_nums";
+            this.flowLayoutPanel_fcfs_nums.Size = new System.Drawing.Size(0, 0);
+            this.flowLayoutPanel_fcfs_nums.TabIndex = 11;
+            // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.groupBox1);
+            this.tabPage2.Controls.Add(this.flowLayoutPanel3);
             this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.numericUpDown3);
@@ -229,34 +326,50 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 26);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(436, 419);
+            this.tabPage2.Size = new System.Drawing.Size(428, 357);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "SJF";
             this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
-            // groupBox1
+            // flowLayoutPanel3
             // 
-            this.groupBox1.Controls.Add(this.gant);
-            this.groupBox1.Location = new System.Drawing.Point(3, 253);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(430, 158);
-            this.groupBox1.TabIndex = 11;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Gantt Chart";
+            this.flowLayoutPanel3.AutoScroll = true;
+            this.flowLayoutPanel3.Controls.Add(this.flowLayoutPanel4);
+            this.flowLayoutPanel3.Controls.Add(this.flowLayoutPanel5);
+            this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(20, 271);
+            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(390, 72);
+            this.flowLayoutPanel3.TabIndex = 13;
+            this.flowLayoutPanel3.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel3_Paint);
             // 
-            // gant
+            // flowLayoutPanel4
             // 
-            this.gant.Location = new System.Drawing.Point(4, 19);
-            this.gant.Multiline = true;
-            this.gant.Name = "gant";
-            this.gant.Size = new System.Drawing.Size(420, 133);
-            this.gant.TabIndex = 10;
+            this.flowLayoutPanel4.AutoSize = true;
+            this.flowLayoutPanel4.BackColor = System.Drawing.Color.DarkRed;
+            this.flowLayoutPanel4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(2, 2);
+            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(0, 0);
+            this.flowLayoutPanel4.TabIndex = 10;
+            // 
+            // flowLayoutPanel5
+            // 
+            this.flowLayoutPanel5.AutoSize = true;
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(2, 6);
+            this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(0, 0);
+            this.flowLayoutPanel5.TabIndex = 11;
             // 
             // label9
             // 
             this.label9.BackColor = System.Drawing.Color.LightGray;
             this.label9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label9.Location = new System.Drawing.Point(203, 208);
+            this.label9.Location = new System.Drawing.Point(175, 208);
             this.label9.Margin = new System.Windows.Forms.Padding(3);
             this.label9.Name = "label9";
             this.label9.Padding = new System.Windows.Forms.Padding(1);
@@ -266,7 +379,7 @@
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(71, 208);
+            this.label8.Location = new System.Drawing.Point(44, 208);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(126, 22);
             this.label8.TabIndex = 8;
@@ -276,7 +389,7 @@
             // numericUpDown3
             // 
             this.numericUpDown3.AutoSize = true;
-            this.numericUpDown3.Location = new System.Drawing.Point(335, 143);
+            this.numericUpDown3.Location = new System.Drawing.Point(328, 143);
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(52, 20);
             this.numericUpDown3.TabIndex = 7;
@@ -284,7 +397,7 @@
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(204, 132);
+            this.label7.Location = new System.Drawing.Point(172, 132);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(96, 43);
             this.label7.TabIndex = 6;
@@ -295,7 +408,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(90, 146);
+            this.checkBox1.Location = new System.Drawing.Point(47, 146);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(80, 17);
             this.checkBox1.TabIndex = 5;
@@ -305,8 +418,7 @@
             // 
             // button3
             // 
-            this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(325, 75);
+            this.button3.Location = new System.Drawing.Point(316, 82);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 37);
             this.button3.TabIndex = 4;
@@ -317,14 +429,14 @@
             // numericUpDown2
             // 
             this.numericUpDown2.AutoSize = true;
-            this.numericUpDown2.Location = new System.Drawing.Point(226, 90);
+            this.numericUpDown2.Location = new System.Drawing.Point(197, 90);
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(52, 20);
             this.numericUpDown2.TabIndex = 3;
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(78, 73);
+            this.label6.Location = new System.Drawing.Point(44, 73);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(96, 52);
             this.label6.TabIndex = 2;
@@ -334,7 +446,7 @@
             // numericUpDown1
             // 
             this.numericUpDown1.AutoSize = true;
-            this.numericUpDown1.Location = new System.Drawing.Point(225, 29);
+            this.numericUpDown1.Location = new System.Drawing.Point(197, 29);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(52, 20);
             this.numericUpDown1.TabIndex = 1;
@@ -342,7 +454,7 @@
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(77, 16);
+            this.label5.Location = new System.Drawing.Point(44, 16);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(96, 43);
             this.label5.TabIndex = 0;
@@ -351,7 +463,7 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.groupBox2);
+            this.tabPage3.Controls.Add(this.flowLayoutPanel6);
             this.tabPage3.Controls.Add(this.numericUpDown7);
             this.tabPage3.Controls.Add(this.label15);
             this.tabPage3.Controls.Add(this.label12);
@@ -366,28 +478,42 @@
             this.tabPage3.Controls.Add(this.label11);
             this.tabPage3.Location = new System.Drawing.Point(4, 26);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(436, 419);
+            this.tabPage3.Size = new System.Drawing.Size(428, 357);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Priority";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // flowLayoutPanel6
             // 
-            this.groupBox2.Controls.Add(this.gant2);
-            this.groupBox2.Location = new System.Drawing.Point(3, 260);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(430, 158);
-            this.groupBox2.TabIndex = 17;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Gantt Chart";
+            this.flowLayoutPanel6.AutoScroll = true;
+            this.flowLayoutPanel6.Controls.Add(this.flowLayoutPanel7);
+            this.flowLayoutPanel6.Controls.Add(this.flowLayoutPanel8);
+            this.flowLayoutPanel6.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel6.Location = new System.Drawing.Point(17, 269);
+            this.flowLayoutPanel6.Margin = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(390, 72);
+            this.flowLayoutPanel6.TabIndex = 17;
             // 
-            // gant2
+            // flowLayoutPanel7
             // 
-            this.gant2.Location = new System.Drawing.Point(4, 19);
-            this.gant2.Multiline = true;
-            this.gant2.Name = "gant2";
-            this.gant2.Size = new System.Drawing.Size(420, 133);
-            this.gant2.TabIndex = 10;
+            this.flowLayoutPanel7.AutoSize = true;
+            this.flowLayoutPanel7.BackColor = System.Drawing.Color.DarkRed;
+            this.flowLayoutPanel7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.flowLayoutPanel7.Location = new System.Drawing.Point(2, 2);
+            this.flowLayoutPanel7.Margin = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel7.Name = "flowLayoutPanel7";
+            this.flowLayoutPanel7.Size = new System.Drawing.Size(0, 0);
+            this.flowLayoutPanel7.TabIndex = 10;
+            // 
+            // flowLayoutPanel8
+            // 
+            this.flowLayoutPanel8.AutoSize = true;
+            this.flowLayoutPanel8.Location = new System.Drawing.Point(2, 6);
+            this.flowLayoutPanel8.Margin = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel8.Name = "flowLayoutPanel8";
+            this.flowLayoutPanel8.Size = new System.Drawing.Size(0, 0);
+            this.flowLayoutPanel8.TabIndex = 11;
             // 
             // numericUpDown7
             // 
@@ -459,7 +585,6 @@
             // 
             // button4
             // 
-            this.button4.Enabled = false;
             this.button4.Location = new System.Drawing.Point(332, 93);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 37);
@@ -505,22 +630,71 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.flowLayoutPanel1);
+            this.tabPage4.Controls.Add(this.label24);
             this.tabPage4.Controls.Add(this.textBox4);
             this.tabPage4.Controls.Add(this.label19);
             this.tabPage4.Controls.Add(this.label16);
             this.tabPage4.Controls.Add(this.insertButton_RR);
             this.tabPage4.Controls.Add(this.waitingText_RR);
             this.tabPage4.Controls.Add(this.textBox2);
+            this.tabPage4.Controls.Add(this.label23);
+            this.tabPage4.Controls.Add(this.label22);
             this.tabPage4.Controls.Add(this.label17);
             this.tabPage4.Controls.Add(this.button6);
+            this.tabPage4.Controls.Add(this.arrivalText_RR);
             this.tabPage4.Controls.Add(this.burstText_RR);
             this.tabPage4.Controls.Add(this.label18);
             this.tabPage4.Location = new System.Drawing.Point(4, 26);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(436, 419);
+            this.tabPage4.Size = new System.Drawing.Size(428, 357);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "RoundRobin";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel_RR);
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel_RR_nums);
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(26, 275);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(372, 58);
+            this.flowLayoutPanel1.TabIndex = 22;
+            // 
+            // flowLayoutPanel_RR
+            // 
+            this.flowLayoutPanel_RR.AutoSize = true;
+            this.flowLayoutPanel_RR.BackColor = System.Drawing.Color.DarkRed;
+            this.flowLayoutPanel_RR.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.flowLayoutPanel_RR.Location = new System.Drawing.Point(2, 2);
+            this.flowLayoutPanel_RR.Margin = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel_RR.Name = "flowLayoutPanel_RR";
+            this.flowLayoutPanel_RR.Size = new System.Drawing.Size(0, 0);
+            this.flowLayoutPanel_RR.TabIndex = 20;
+            // 
+            // flowLayoutPanel_RR_nums
+            // 
+            this.flowLayoutPanel_RR_nums.AutoSize = true;
+            this.flowLayoutPanel_RR_nums.Location = new System.Drawing.Point(2, 6);
+            this.flowLayoutPanel_RR_nums.Margin = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel_RR_nums.Name = "flowLayoutPanel_RR_nums";
+            this.flowLayoutPanel_RR_nums.Size = new System.Drawing.Size(0, 0);
+            this.flowLayoutPanel_RR_nums.TabIndex = 21;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label24.Location = new System.Drawing.Point(28, 196);
+            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(307, 26);
+            this.label24.TabIndex = 19;
+            this.label24.Text = "NOTE: first process arrival time must be 0 and other processes\r\n must be greater " +
+    "than 0.Or all arrival times equal 0.";
             // 
             // textBox4
             // 
@@ -552,7 +726,7 @@
             // 
             // insertButton_RR
             // 
-            this.insertButton_RR.Location = new System.Drawing.Point(322, 125);
+            this.insertButton_RR.Location = new System.Drawing.Point(332, 138);
             this.insertButton_RR.Margin = new System.Windows.Forms.Padding(2);
             this.insertButton_RR.Name = "insertButton_RR";
             this.insertButton_RR.Size = new System.Drawing.Size(84, 41);
@@ -563,7 +737,7 @@
             // 
             // waitingText_RR
             // 
-            this.waitingText_RR.Location = new System.Drawing.Point(217, 218);
+            this.waitingText_RR.Location = new System.Drawing.Point(217, 233);
             this.waitingText_RR.Margin = new System.Windows.Forms.Padding(2);
             this.waitingText_RR.Name = "waitingText_RR";
             this.waitingText_RR.Size = new System.Drawing.Size(72, 20);
@@ -577,10 +751,30 @@
             this.textBox2.Size = new System.Drawing.Size(76, 20);
             this.textBox2.TabIndex = 9;
             // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(96, 167);
+            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(93, 13);
+            this.label23.TabIndex = 15;
+            this.label23.Text = "enter arrival time:";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(96, 138);
+            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(88, 13);
+            this.label22.TabIndex = 15;
+            this.label22.Text = "enter burst time:";
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(56, 225);
+            this.label17.Location = new System.Drawing.Point(56, 238);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(115, 13);
@@ -598,9 +792,18 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click_1);
             // 
+            // arrivalText_RR
+            // 
+            this.arrivalText_RR.Location = new System.Drawing.Point(217, 164);
+            this.arrivalText_RR.Margin = new System.Windows.Forms.Padding(2);
+            this.arrivalText_RR.Name = "arrivalText_RR";
+            this.arrivalText_RR.Size = new System.Drawing.Size(76, 20);
+            this.arrivalText_RR.TabIndex = 13;
+            this.arrivalText_RR.Text = "0";
+            // 
             // burstText_RR
             // 
-            this.burstText_RR.Location = new System.Drawing.Point(217, 136);
+            this.burstText_RR.Location = new System.Drawing.Point(217, 138);
             this.burstText_RR.Margin = new System.Windows.Forms.Padding(2);
             this.burstText_RR.Name = "burstText_RR";
             this.burstText_RR.Size = new System.Drawing.Size(76, 20);
@@ -612,40 +815,52 @@
             this.label18.Location = new System.Drawing.Point(41, 98);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(268, 13);
+            this.label18.Size = new System.Drawing.Size(348, 13);
             this.label18.TabIndex = 14;
-            this.label18.Text = "enter burst time of the process and click insert button:";
+            this.label18.Text = "enter burst time  and arrival time of the process and click insert button:";
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 100);
+            this.panel1.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(444, 449);
+            this.ClientSize = new System.Drawing.Size(436, 387);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "CPU_Scheduler";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.flowLayoutPanel6.ResumeLayout(false);
+            this.flowLayoutPanel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -658,10 +873,10 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox burstTime_text;
+        private System.Windows.Forms.TextBox burstText_fcfs;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox waitingTime_text;
+        private System.Windows.Forms.TextBox waitingText_fcfs;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -692,17 +907,34 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Button insertButton_RR;
         private System.Windows.Forms.TextBox waitingText_RR;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox arrivalText_fcfs;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button insertButton_RR;
         private System.Windows.Forms.TextBox burstText_RR;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox gant;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox gant2;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox arrivalText_RR;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel_fcfs;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel_fcfs_nums;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel_RR_nums;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel_RR;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
     }
 }
 
