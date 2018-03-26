@@ -25,7 +25,13 @@ namespace scheduler_CPU
         private void button1_Click(object sender, EventArgs e)
         {
             n_fcfs = int.Parse(nOfProcesses.Text);
-            
+            MessageBox.Show("ok!number of processes inserted");
+            flowLayoutPanel_fcfs.Controls.Clear();
+            flowLayoutPanel_fcfs_nums.Controls.Clear();
+            button2.Enabled=true;
+            counter_fcfs = 0;
+            averageWtime_fcfs = 0;
+            time_fcfs = 0;
         }
         Queue<Process> queue_fcfs = new Queue<Process>();
         int counter_fcfs = 0;
@@ -38,6 +44,7 @@ namespace scheduler_CPU
             p_fcfs.arrival_time = int.Parse(arrivalText_fcfs.Text);
             queue_fcfs.Enqueue(p_fcfs);
             counter_fcfs++;
+            MessageBox.Show("Inserted");
             if (n_fcfs == counter_fcfs)
             {
                 button2.Enabled = false;
@@ -469,7 +476,13 @@ namespace scheduler_CPU
         {
             n_RR = int.Parse(textBox2.Text);
             quantum = int.Parse(textBox4.Text);
-            MessageBox.Show("ok!");
+            MessageBox.Show("ok!number of processes inserted");
+            flowLayoutPanel_RR.Controls.Clear();
+            flowLayoutPanel_RR_nums.Controls.Clear();
+            insertButton_RR.Enabled = true;
+            counter_RR = 0;
+            averageWtime_RR = 0;
+            time_RR = 0;
         }
         Queue<Process> queue = new Queue<Process>();
         int counter_RR = 0;
@@ -481,6 +494,7 @@ namespace scheduler_CPU
             p.arrival_time = int.Parse(arrivalText_RR.Text);
             queue.Enqueue(p);
             counter_RR++;
+            MessageBox.Show("Inserted");
             if (n_RR == counter_RR)
             {
                 insertButton_RR.Enabled = false;
