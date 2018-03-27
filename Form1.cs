@@ -44,7 +44,8 @@ namespace scheduler_CPU
             p_fcfs.arrival_time = int.Parse(arrivalText_fcfs.Text);
             queue_fcfs.Enqueue(p_fcfs);
             counter_fcfs++;
-            MessageBox.Show("Inserted");
+            string ss_fcfs = "Inserted " + (counter_fcfs.ToString()) + " from " + (n_fcfs.ToString());
+            MessageBox.Show(ss_fcfs);
             if (n_fcfs == counter_fcfs)
             {
                 button2.Enabled = false;
@@ -154,7 +155,8 @@ namespace scheduler_CPU
             x.burst_time = (int)numericUpDown2.Value;
             if (checkBox1.Checked) x.arrival_time = (int)numericUpDown3.Value;
             vals.Add(x);
-            MessageBox.Show("Inserted");
+            string ss_sjf = "Inserted " + (vals.Count.ToString()) + " from " + (num_process.ToString());
+            MessageBox.Show(ss_sjf);
 
             if (vals.Count == num_process && !checkBox1.Checked)
             {
@@ -338,7 +340,8 @@ namespace scheduler_CPU
             prix.priority = (int)numericUpDown7.Value; //priority
             if (checkBox2.Checked) prix.arrival_time = (int)numericUpDown6.Value; //arival time
             pri_vals.Add(prix);
-            MessageBox.Show("Inserted");
+            string ss_prio = "Inserted " + (pri_vals.Count.ToString()) + " from " +( num_process_prio.ToString());
+            MessageBox.Show(ss_prio);
 
             if (pri_vals.Count == num_process_prio && !checkBox2.Checked)
             {
@@ -494,7 +497,8 @@ namespace scheduler_CPU
             p.arrival_time = int.Parse(arrivalText_RR.Text);
             queue.Enqueue(p);
             counter_RR++;
-            MessageBox.Show("Inserted");
+            string ss_RR = "Inserted " + (counter_RR.ToString()) + " from " + (n_RR.ToString());
+            MessageBox.Show(ss_RR);
             if (n_RR == counter_RR)
             {
                 insertButton_RR.Enabled = false;
