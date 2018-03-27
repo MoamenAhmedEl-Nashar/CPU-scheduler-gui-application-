@@ -481,7 +481,7 @@ namespace scheduler_CPU
         {
             n_RR = int.Parse(textBox2.Text);
             quantum = int.Parse(textBox4.Text);
-            MessageBox.Show("ok!number of processes inserted");
+            MessageBox.Show("ok!number of processes and quantum time inserted");
             flowLayoutPanel_RR.Controls.Clear();
             flowLayoutPanel_RR_nums.Controls.Clear();
             insertButton_RR.Enabled = true;
