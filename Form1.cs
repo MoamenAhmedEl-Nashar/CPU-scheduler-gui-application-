@@ -66,12 +66,13 @@ namespace scheduler_CPU
                 }
                 else
                 {
-                    tempp_fcfs.waiting_time = time_fcfs - tempp_fcfs.last_active;
+                    tempp_fcfs.waiting_time = time_fcfs - tempp_fcfs.arrival_time;
                     averageWtime_fcfs += tempp_fcfs.waiting_time;
                     //time chart//
                     Label num_fcfs = new Label();
                     num_fcfs.Text = time_fcfs.ToString();
-                    num_fcfs.Width = tempp_fcfs.burst_time * 10;
+                    if (tempp_fcfs.burst_time < 3) num_fcfs.Width = 27;
+                    else num_fcfs.Width = tempp_fcfs.burst_time * 10;
                     flowLayoutPanel_fcfs_nums.Controls.Add(num_fcfs);
                     //end time chart//
                     time_fcfs += tempp_fcfs.burst_time;
@@ -83,7 +84,8 @@ namespace scheduler_CPU
                    
                     string s = "P" + tempp_fcfs.Pid.ToString();
                     tempLabel_fcfs.Text = s;
-                    tempLabel_fcfs.Width = tempp_fcfs.burst_time * 10;
+                    if (tempp_fcfs.burst_time < 3) tempLabel_fcfs.Width = 27;
+                    else tempLabel_fcfs.Width = tempp_fcfs.burst_time * 10;
                     flowLayoutPanel_fcfs.Controls.Add(tempLabel_fcfs);
                     ////////////////////////
                     tempp_fcfs.burst_time -= tempp_fcfs.burst_time;
@@ -522,13 +524,14 @@ namespace scheduler_CPU
                 {
                     if (tempp.burst_time < quantum)
                     {
-                        tempp.waiting_time = time_RR - tempp.last_active;
+                        tempp.waiting_time = time_RR - tempp.last_active-tempp.arrival_time;
                         averageWtime_RR += tempp.waiting_time;
                         //////////
                         Label num_RR = new Label();
                         
                         num_RR.Text = time_RR.ToString();
-                        num_RR.Width = tempp.burst_time * 10;
+                        if (tempp.burst_time < 3) num_RR.Width = 27;
+                        else num_RR.Width = tempp.burst_time * 10;
                         flowLayoutPanel_RR_nums.Controls.Add(num_RR);
                         /////////
                         time_RR += tempp.burst_time;
@@ -540,7 +543,8 @@ namespace scheduler_CPU
                         
                         string s = "p" + tempp.Pid.ToString();
                         tempLabel_RR.Text = s;
-                        tempLabel_RR.Width = tempp.burst_time * 10;
+                        if (tempp.burst_time < 3) tempLabel_RR.Width = 27;
+                        else tempLabel_RR.Width = tempp.burst_time * 10;
                         flowLayoutPanel_RR.Controls.Add(tempLabel_RR);
 
 
@@ -553,13 +557,14 @@ namespace scheduler_CPU
                     }
                     else
                     {
-                        tempp.waiting_time = time_RR - tempp.last_active;
+                        tempp.waiting_time = time_RR - tempp.last_active - tempp.arrival_time;
                         averageWtime_RR += tempp.waiting_time;
                         //////////
                         Label num_RR = new Label();
                         
                         num_RR.Text = time_RR.ToString();
-                        num_RR.Width = quantum * 10;
+                        if (quantum < 3) num_RR.Width = 27;
+                        else num_RR.Width = quantum * 10;
                         flowLayoutPanel_RR_nums.Controls.Add(num_RR);
                         /////////
                         time_RR += quantum;
@@ -571,7 +576,8 @@ namespace scheduler_CPU
                         
                         string s = "p" + tempp.Pid.ToString();
                         tempLabel_RR.Text = s;
-                        tempLabel_RR.Width = quantum * 10;
+                        if (quantum < 3) tempLabel_RR.Width = 27;
+                        else tempLabel_RR.Width = quantum * 10;
                         flowLayoutPanel_RR.Controls.Add(tempLabel_RR);
 
 
