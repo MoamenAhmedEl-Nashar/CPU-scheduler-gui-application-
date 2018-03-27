@@ -95,6 +95,7 @@
             this.burstText_RR = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label26 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -654,6 +655,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.label26);
             this.tabPage4.Controls.Add(this.flowLayoutPanel1);
             this.tabPage4.Controls.Add(this.label24);
             this.tabPage4.Controls.Add(this.textBox4);
@@ -732,7 +734,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(88, 128);
+            this.label19.Location = new System.Drawing.Point(82, 122);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(191, 25);
@@ -742,7 +744,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(82, 78);
+            this.label16.Location = new System.Drawing.Point(82, 75);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(251, 25);
@@ -850,6 +852,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 100);
             this.panel1.TabIndex = 0;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label26.Location = new System.Drawing.Point(82, 28);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(533, 25);
+            this.label26.TabIndex = 23;
+            this.label26.Text = "Enter number of processes and quantum time , then click ok:";
             // 
             // Form1
             // 
@@ -961,6 +973,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
+        private System.Windows.Forms.Label label26;
     }
 }
 

@@ -524,7 +524,11 @@ namespace scheduler_CPU
                 {
                     if (tempp.burst_time < quantum)
                     {
-                        tempp.waiting_time = time_RR - tempp.last_active-tempp.arrival_time;
+                        if(tempp.last_active==0)
+                            tempp.waiting_time = time_RR - tempp.arrival_time;
+                        else
+                            tempp.waiting_time = time_RR - tempp.last_active;
+
                         averageWtime_RR += tempp.waiting_time;
                         //////////
                         Label num_RR = new Label();
@@ -557,7 +561,10 @@ namespace scheduler_CPU
                     }
                     else
                     {
-                        tempp.waiting_time = time_RR - tempp.last_active - tempp.arrival_time;
+                        if (tempp.last_active == 0)
+                            tempp.waiting_time = time_RR - tempp.arrival_time;
+                        else
+                            tempp.waiting_time = time_RR - tempp.last_active;
                         averageWtime_RR += tempp.waiting_time;
                         //////////
                         Label num_RR = new Label();
